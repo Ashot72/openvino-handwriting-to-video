@@ -1,0 +1,19 @@
+# OpenVINO 2026 — LTX (Text2VideoPipeline) + TrOCR (OpenVINO)
+openvino>=2026.0
+openvino-genai>=2026.0
+openvino-tokenizers>=2026.0
+
+# TrOCR (OVModelForVision2Seq) + optimum-cli export for LTX
+optimum[openvino]
+optimum-intel
+transformers>=4.45,<4.58
+torch
+diffusers>=0.32.0
+nncf>=2.15
+
+# App + saving LTX output
+gradio>=6.0
+pyyaml
+pillow
+numpy
+imageio[ffmpeg]

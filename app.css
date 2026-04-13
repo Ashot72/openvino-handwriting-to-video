@@ -1,0 +1,79 @@
+/* Gradio app: layout, prompt width, full-screen sketch overlay */
+
+/* Tighter layout so the page fits the viewport without a stray vertical scrollbar */
+html, body {
+    margin: 0 !important;
+    overflow-x: hidden !important;
+}
+
+.gradio-container {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    box-sizing: border-box !important;
+}
+
+.prompt-full-width {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* One row: [ Recognize | Clear ] 50% | [ Generate ] 50% */
+.three-btn-row,
+.rec-clear-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    gap: 0.5rem !important;
+    box-sizing: border-box !important;
+}
+.three-btn-row > * {
+    flex: 1 1 50% !important;
+    min-width: 0 !important;
+}
+.rec-clear-inner > * {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+}
+.three-btn-row .gen-half,
+.three-btn-row .gen-half button,
+.rec-clear-inner .rec-clear-half,
+.rec-clear-inner .rec-clear-half button {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+#sketch-modal-column.sketch-modal-open {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99999 !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    background: rgba(0, 0, 0, 0.88) !important;
+    overflow: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Open / Close: swap visibility with full-screen sketch (see app.py sketch-modal-open) */
+#sketch-modal-column.sketch-modal-open .sketch-modal-open-btn {
+    display: none !important;
+}
+
+#sketch-modal-column:not(.sketch-modal-open) .sketch-modal-close-btn {
+    display: none !important;
+}
+
+#sketch-modal-column.sketch-modal-open .sketch-modal-toolbar {
+    flex: 0 0 auto !important;
+}
+
+#sketch-modal-column.sketch-modal-open .gradio-imageeditor {
+    flex: 1 1 auto !important;
+    min-height: min(85vh, 900px) !important;
+}

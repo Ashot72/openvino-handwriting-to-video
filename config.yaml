@@ -1,0 +1,32 @@
+# Text-to-video: OpenVINO GenAI + LTX-Video IR only (see README / export_ltx.py).
+# Hugging Face downloads (TrOCR weights, LTX during export) go under models/hf_home.
+
+models:
+  hf_home: models/huggingface
+
+ocr:
+  model_id: microsoft/trocr-large-handwritten
+  device: GPU
+
+ltx:
+  hub_model_id: Lightricks/LTX-Video
+  ov_model_dir: models/LTX-Video/fp16
+  device: GPU
+  # Width/height divisible by 32 (LTX). Heavy preset — lower if GPU OOM or too slow.
+  width: 1024
+  height: 576
+  # Prefer 8*n+1. More frames = more VRAM and time.
+  num_frames: 49
+  # More diffusion steps = usually sharper detail; 60 is strong (slow).
+  num_inference_steps: 60
+  guidance_scale: 4.0
+  frame_rate: 25
+  negative_prompt: "worst quality, low resolution, blurry, soft focus, jpeg artifacts, banding, compression artifacts, inconsistent motion, jittery, distorted, noisy, watermark, text, cartoon, anime"
+  # libx264 CRF for saved MP4 (lower = higher quality / larger files; typical 18–23; omit key for encoder default).
+  video_crf: 18
+  seed: 42
+
+app:
+  host: 127.0.0.1
+  port: 7860
+  share: false
