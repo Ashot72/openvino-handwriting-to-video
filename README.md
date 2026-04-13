@@ -1,6 +1,6 @@
 #### 🚀 Gradio-Powered Handwriting (TrOCR + OpenVINO) to Video Generation (LTX + OpenVINO GenAI)
 
-This Gradio app links handwriting input to video generation, using TrOCR for OCR and LTX-Video for text-to-video conversion, both powered by OpenVINO. Users write or draw on the canvas, triggering TrOCR to recognize the handwriting and convert it into text. The recognized text is then passed to LTX-Video, which generates a short video clip based on the input text. The entire process runs on Intel hardware using OpenVINO's optimized inference for fast performance.
+This Gradio app links handwriting input to video generation, using TrOCR for OCR and LTX-Video for text-to-video conversion, both powered by OpenVINO. Users write on the canvas using a mouse or touch, triggering TrOCR to recognize the handwriting and convert it into text. The recognized text is then passed to LTX-Video, which generates a short video clip based on the input text. The entire process runs on Intel hardware using OpenVINO's optimized inference for fast performance.
 
 When a user clicks "Recognize," the handwriting is processed through TrOCR, and the recognized text is added to the prompt box. The "Generate" button then initiates the video creation process using LTX-Video. Video output is displayed as an MP4 file, with options to download.
 
